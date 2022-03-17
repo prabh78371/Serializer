@@ -6,13 +6,13 @@ from .serializer import Employeeserilizer
 from rest_framework.renderers import JSONRenderer
 
 # Create your views here.
-def stu_info(request):
+def emp_info(request):
     stu_data = Employee.objects.get(id=1)
     serilizer = Employeeserilizer(stu_data)
     json_data = JSONRenderer().render(serilizer.data)
     return HttpResponse(json_data,content_type = 'application/json')
 
-def stu_detail(request):
+def emp_detail(request):
     stu_data = Employee.objects.all()
     serilizer = Employeeserilizer(stu_data,many=True)
     return JsonResponse(serilizer.data,safe = False)
